@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import QUESTIONS from "../data/questions";
 
 type TAnswersProps = {
   answers: string[];
