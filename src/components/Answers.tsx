@@ -1,16 +1,17 @@
 import { useRef } from "react";
+import QUESTIONS from "../data/questions";
 
 type TAnswersProps = {
   answers: string[];
   answerState: string;
-  userAnswers: string[];
+  selectedAnswer: string;
   onSelectAnswer: (selectedAnswer: string) => void;
 };
 
 const Answers = ({
   answers,
   answerState,
-  userAnswers,
+  selectedAnswer,
   onSelectAnswer,
 }: TAnswersProps) => {
   const shuffledAnswers = useRef<string[] | null>();
@@ -23,7 +24,7 @@ const Answers = ({
   return (
     <ul id="answers">
       {shuffledAnswers.current.map((answer) => {
-        const isSelected = userAnswers[userAnswers.length - 1] === answer;
+        const isSelected = selectedAnswer === answer;
         let cssClass = "";
 
         if (answerState === "answered" && isSelected) {
@@ -37,9 +38,17 @@ const Answers = ({
           cssClass = answerState;
         }
 
+        if (answerState === "wrong" && answer === answers[0]) {
+          cssClass = "correct";
+        }
+
         return (
           <li key={answer} className="answer">
-            <button onClick={() => onSelectAnswer(answer)} className={cssClass}>
+            <button
+              onClick={() => onSelectAnswer(answer)}
+              className={cssClass}
+              disabled={answerState !== ""}
+            >
               {answer}
             </button>
           </li>

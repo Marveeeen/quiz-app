@@ -1,58 +1,46 @@
 import { useState } from "react";
 
 import QUESTIONS from "../data/questions";
-import quizCompletedImg from "../assets/quiz-complete.png";
-import Answers from "./Answers";
+import Question from "./Question";
+import Summary from "./Summary";
 
 const Quiz = () => {
-  const [answerState, setAnswerState] = useState("");
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
-
-  const activeQuestionIndex =
-    answerState === "" ? userAnswers.length : userAnswers.length - 1;
+  const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 
   const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
   const handleSelectAnswer = (selectedAnswer: string) => {
     const newUserAnswers = [...userAnswers, selectedAnswer];
-    setAnswerState("answered");
     setUserAnswers(newUserAnswers);
+  };
 
-    setTimeout(() => {
-      if (selectedAnswer === QUESTIONS[activeQuestionIndex].answers[0]) {
-        setAnswerState("correct");
-      } else {
-        setAnswerState("wrong");
-      }
-
-      setTimeout(() => {
-        setAnswerState("");
-      }, 2000);
-    }, 1000);
+  const handleActiveQuestionIndex = () => {
+    setActiveQuestionIndex(userAnswers.length);
   };
 
   if (quizIsComplete) {
-    return (
-      <div id="summary">
-        <img src={quizCompletedImg} alt="Quiz complete" />
-        <h2>Quiz Completed</h2>
-      </div>
-    );
+    return <Summary userAnswers={userAnswers} />;
   }
 
   return (
-    <div id="quiz">
-      <div id="question">
-        <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-        <Answers
+    <>
+      <div id="quiz">
+        <Question
           key={activeQuestionIndex}
-          answers={QUESTIONS[activeQuestionIndex].answers}
-          answerState={answerState}
-          userAnswers={userAnswers}
+          activeQuestionIndex={activeQuestionIndex}
           onSelectAnswer={handleSelectAnswer}
         />
       </div>
-    </div>
+      <div className="toolbar">
+        <button
+          onClick={handleActiveQuestionIndex}
+          disabled={activeQuestionIndex === userAnswers.length}
+        >
+          Next
+        </button>
+      </div>
+    </>
   );
 };
 
