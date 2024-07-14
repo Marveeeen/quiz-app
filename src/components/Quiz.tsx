@@ -19,7 +19,7 @@ const Quiz = () => {
     setActiveQuestionIndex(userAnswers.length);
   };
 
-  if (quizIsComplete) {
+  if (!quizIsComplete) {
     return <Summary userAnswers={userAnswers} />;
   }
 
