@@ -66,12 +66,12 @@ const QUESTIONS = [
   },
   {
     id: "q9",
-    text: "In Erikson&#39;s psychosocial theory, if a child is able to feel the love of his or her parents or caregivers in the infancy period, he or she will acquire the virtue of ______?",
+    text: "In Erikson's psychosocial theory, if a child is able to feel the love of his or her parents or caregivers in the infancy period, he or she will acquire the virtue of ______?",
     answers: ["Hope", "Care", "Wisdom", "Fidelity"],
   },
   {
     id: "q10",
-    text: "Joy allows her classmates to copy her homework so that they will think she is kind and will like her to be their friend. In what Kohlberg&#39;s Development Theory does Joy shows? A. Punishment and Obedience",
+    text: "Joy allows her classmates to copy her homework so that they will think she is kind and will like her to be their friend. In what Kohlberg's Development Theory does Joy shows? A. Punishment and Obedience",
     answers: [
       "Social Approval",
       "Punishment and Obedience",
@@ -81,7 +81,7 @@ const QUESTIONS = [
   },
   {
     id: "q11",
-    text: "Which form of violence occurs when someone uses a part of their body or an object to control a person&#39;s action?",
+    text: "Which form of violence occurs when someone uses a part of their body or an object to control a person's action?",
     answers: [
       "Physical Violence",
       "Psychological Violence",
@@ -94,7 +94,7 @@ const QUESTIONS = [
     text: "In order to make Roman education truly utilitarian, how should the day-to-day lesson be taught?",
     answers: [
       "Related and linked to the events happening in the everyday life",
-      "Thought in the student&#39;s native dialect",
+      "Thought in the student's native dialect",
       "Thought interestingly through the play-way method",
       "Practice at home under the guidance of their respective parents",
     ],
@@ -153,10 +153,10 @@ const QUESTIONS = [
     id: "q18",
     text: "In her leadership in the community, a professional teacher shows no sign of ethnocentrism. What does this mean?",
     answers: [
-      "Does not belittle other people&#39;s culture",
-      "Does not mind other people&#39;s culture",
+      "Does not belittle other people's culture",
+      "Does not mind other people's culture",
       "Is ashamed of her own culture",
-      "Looks at her culture as superior to others&#39; culture",
+      "Looks at her culture as superior to others' culture",
     ],
   },
   {

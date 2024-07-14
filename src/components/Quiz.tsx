@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import QUESTIONS from "../data/questions";
 import Question from "./Question";
 import Summary from "./Summary";
+import Modal from "./Modal";
 
 const Quiz = () => {
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
+
+  const dialog = useRef<{ open: () => void } | null>(null);
 
   const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
@@ -19,7 +22,11 @@ const Quiz = () => {
     setActiveQuestionIndex(userAnswers.length);
   };
 
-  if (!quizIsComplete) {
+  const handleOpenDescription = () => {
+    dialog.current?.open();
+  };
+
+  if (quizIsComplete) {
     return <Summary userAnswers={userAnswers} />;
   }
 
@@ -33,8 +40,8 @@ const Quiz = () => {
         />
       </div>
       <div className="toolbar">
-      <button
-          // onClick={handleActiveQuestionIndex}
+        <button
+          onClick={handleOpenDescription}
           disabled={activeQuestionIndex === userAnswers.length}
         >
           Description
@@ -46,6 +53,9 @@ const Quiz = () => {
           Next
         </button>
       </div>
+      <Modal title="Description" ref={dialog}>
+        <p>{"No description"}</p>
+      </Modal>
     </>
   );
 };
