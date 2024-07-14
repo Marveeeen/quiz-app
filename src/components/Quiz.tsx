@@ -33,6 +33,12 @@ const Quiz = () => {
         />
       </div>
       <div className="toolbar">
+      <button
+          // onClick={handleActiveQuestionIndex}
+          disabled={activeQuestionIndex === userAnswers.length}
+        >
+          Description
+        </button>
         <button
           onClick={handleActiveQuestionIndex}
           disabled={activeQuestionIndex === userAnswers.length}

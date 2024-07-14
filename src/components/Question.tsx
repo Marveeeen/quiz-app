@@ -22,15 +22,12 @@ const Question = ({ activeQuestionIndex, onSelectAnswer }: TQuestionProps) => {
       isCorrect: null,
     });
 
-    onSelectAnswer(answer);
-
     setTimeout(() => {
       setAnswer({
         selectedAnswer: answer,
         isCorrect: answer === QUESTIONS[activeQuestionIndex].answers[0],
       });
       onSelectAnswer(answer);
-      
     }, 1000);
   };
 
@@ -41,8 +38,6 @@ const Question = ({ activeQuestionIndex, onSelectAnswer }: TQuestionProps) => {
   } else if (answer.selectedAnswer) {
     answerState = "answered";
   }
-
-  console.log(answerState);
 
   return (
     <div id="question">
